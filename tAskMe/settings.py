@@ -25,9 +25,9 @@ SECRET_KEY = '-xqk!br=g(xglb_*5l8h9$vi36wcym^atk@%kiataq(y6%6h#7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
-# ALLOWED_HOSTS = ['127.0.0.1', 'alexey.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'aleksma.pythonanywhere.com']
 
 
 # Application definition
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'tAskMe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'questions/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
