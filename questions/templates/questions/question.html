@@ -1,0 +1,180 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" type="text/css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+
+
+    <title>tAskMe</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md fixed-top navbar-light bg-primary">
+    <a class="navbar-brand text-white float-right" href="#"><strong>tAskme</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <form class="form-inline mt-2 mt-md-0 ">
+
+
+            <div class="input-group mr-sm-2">
+
+                <input type="text" class="form-control rounded-left" id="SearchLine" placeholder="Search">
+                <div class="input-group-prepend">
+                    <button class="btn btn-primary border-left-0 btn-outline-light rounded-right"><i
+                            class="fas fa-search fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+        <button class="btn btn-success ml-3 btn-outline-light ">Ask!
+        </button>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link HeaderMenu-link text-white" href="#">Sign in</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link border rounded text-white" href="#">Sign up</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+
+    <div class="row mt-5">
+
+        <div class="col-md-9 mr-auto">
+
+            <div class="col-4 mt-4 mb-2">
+                <strong class="my_head" style="font-family: Roboto, sans-serif">Questions</strong>
+            </div>
+
+
+            <div class="row mb-2">
+                <div class="col-md-9">
+                    <div class="card flex-md-row mb-4 box-shadow">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <div class="row ">
+                                <div class="col-auto mt-2 mr-2 ">
+                                    <div>
+                                        <img src="https://pp.userapi.com/c627131/v627131210/1ead1/D1Ixiikm9Kw.jpg"
+                                             width="100" height="100" style="object-fit: cover">
+                                    </div>
+
+                                    <div class="mt-2">
+                                        <input value="12345" style="width: 100px; text-align: center;">
+                                    </div>
+
+                                    <div class="btn-group btn-group-toggle rounded align-self-center mt-1"
+                                         data-toggle="buttons">
+
+
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option1" autocomplete="off">
+                                            +
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option2" autocomplete="off">
+                                            -
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col ml-2">
+                                    <h3 class="mb-0">
+                                        <a class="text-primary" href="#">Linear algebra objective type
+                                            question</a>
+                                    </h3>
+                                    <p class="card-text mb-auto mt-2">Let M be an n×n hermition matrix of rank k
+                                        if λ≠0
+                                        be an eigen
+                                        value of M with corresponding unit column vector as eigen vector u i.e.
+                                        Mu=λu.
+                                        Then we
+                                        must have...
+                                    </p>
+                                    <div class="row align-items-center mt-3">
+                                        <div class="col ">
+                                            <button class="btn btn-success">
+                                                I know answer!
+                                            </button>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <p class="text-dark">Tags:</p>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="#" class="text-primary">linear-algebra </a>
+                                                    <a href="#" class="text-primary">matrices </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3 mt-5">
+            <div class="">
+                <h3>Tags</h3>
+                <a href="#" class="text-primary">linear-algebra </a>
+                <a href="#" class="text-primary">matrices </a>
+                <a href="#" class="text-primary">permutations</a>
+                <a href="#" class="text-primary">combinatorics</a>
+                <a href="#" class="text-primary">calculus</a>
+                <a href="#" class="text-primary">real-analysis</a>
+                <a href="#" class="text-primary">integration</a>
+
+            </div>
+            <div class="mt-2">
+                <h3>Users</h3>
+                <a href="#">Danil</a><br>
+                <a href="#">Anton</a><br>
+                <a href="#">Mi Sa</a><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

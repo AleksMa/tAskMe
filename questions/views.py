@@ -7,6 +7,9 @@ def question_list(request):
 def base(request):
     return render(request, 'questions/base.html', {})
 
+def question(request):
+    return render(request, 'questions/question.html', {})
+
 
 # class AboutView(TemplateView):
 #     template_name = "questions/base.html"
