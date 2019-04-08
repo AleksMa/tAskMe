@@ -43,6 +43,20 @@ for i in range(1, 11):
         'rate': 3 * (i - 1) + 3
     })
 
+answers = []
+for i in range(1, 3):
+    answers.append({
+        'id': i,
+        'content': '''Unfortunately, you're making distinctions where there aren't any--for example, one digit 1 is the same as any other, 
+        though it may have a different meaning once we choose a place for it. 
+        The first thing I notice about this problem is that, if I want to directly count the desired numbers, 
+        there will be several cases and subcases. We could start with the case of no 1s 
+        with subcases two 2s and three 2s), then the case of a single 1 (with subcases one 2, two 2s, and three 2s), 
+        and so on. That seems like a pain, though.''',
+        'author': MiSa,
+        'rate': i
+    })
+
 
 def question_list(request):
     # questions = Question.objects.all()
@@ -56,7 +70,7 @@ def base(request):
 
 
 def question(request):
-    return render(request, 'questions/question.html', {})
+    return render(request, 'questions/question.html', {'answers': answers, 'question': questions[4]})
 
 
 def ask(request):
@@ -76,5 +90,3 @@ def settings(request):
 
 # class AboutView(TemplateView):
 #     template_name = "questions/base.html"
-
-

@@ -1,0 +1,24 @@
+{% extends "questions/card.html" %}
+{% load static %}
+
+
+
+{% block bottom %}
+
+    <div class="row align-items-center mt-3">
+        <div class="col">
+            <form>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input"
+                           id="correctCheck" name="example1">
+                    <label class="custom-control-label"
+                           for="correctCheck">Correct</label>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
