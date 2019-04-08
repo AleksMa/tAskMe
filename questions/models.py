@@ -35,6 +35,7 @@ class Tag(models.Model):
 
 class Question(models.Model):
     title = models.TextField
+    id = models.IntegerField
     content = models.TextField
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(default=timezone.now)
