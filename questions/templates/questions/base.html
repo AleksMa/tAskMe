@@ -1,12 +1,14 @@
-<!DOCTYPE html> {% load static %}
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    {% block links %}
+    {% endblock %}
 
-    {% block links %}{% endblock %}
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
 
@@ -15,13 +17,15 @@
     <!-- Icons CSS -->
     <link rel="stylesheet" href="{% static 'css/icons/css/all.css' %}">
 
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+
 
     <title>tAskMe: {% block title %}Base{% endblock %}</title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-md fixed-top navbar-light bg-primary">
-    <a class="navbar-brand text-white float-right" href="{% url 'index' %}"><strong>tAskme</strong></a>
+    <a class="navbar-brand text-white float-right" href="{% url 'index' %}">tAskme</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

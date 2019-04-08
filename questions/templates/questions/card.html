@@ -32,7 +32,7 @@
                     <div class="col ml-2">
                         {% block question-title %}
                             <h3 class="mb-0">
-                                <a class="text-primary" href="#">
+                                <a class="text-primary" href="{% url 'question' question.id %}">
                                     {{ question.title }}
                                 </a>
                             </h3>

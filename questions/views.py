@@ -69,8 +69,8 @@ def base(request):
     return render(request, 'questions/base.html', {})
 
 
-def question(request):
-    return render(request, 'questions/question.html', {'answers': answers, 'question': questions[4]})
+def question(request, question_id):
+    return render(request, 'questions/question.html', {'answers': answers, 'question': questions[int(question_id)-1]})
 
 
 def ask(request):
