@@ -5,30 +5,40 @@ from .models import Question
 
 
 
+userDanya =({'photo': 'images/сool_programmer.jpg'})
+userSanya =({'photo': 'images/female_programmer.jpg'})
+
+tags = []
+tags.append({'text': "linear-algebra"})
+tags.append({'text': "matrices"})
+tags.append({'text': "permutations"})
+tags.append({'text': "combinatorics"})
+tags.append({'text': "calculus"})
+tags.append({'text': "real-analysis"})
+tags.append({'text': "integration"})
+
+
 questions = []
-
-
-
 for i in range(1,10):
   questions.append({
     'id': 3 * (i - 1) + 1,
    'title': "Linear algebra objective type question",
    'content': "Let M be an n×n hermition matrix of rank k if λ≠0 be an eigen value of M with corresponding unit column vector as eigen vector u i.e. Mu=λu. Then we must have...",
-    'tags': "linear-algebra matrices",
+    'tags': tags[0:2],
     'author': "MiSa"
   })
   questions.append({
       'id': 3 * (i - 1) + 2,
       'title': "Number of five digit numbers that can be formed with this condition",
       'content': "How many five digit numbers can be made having the digits 1,2,3 each of which can be used at most thrice in a number?",
-      'tags': "linear-algebra matrices",
+      'tags': tags[2:5],
       'author': "Danil"
   })
   questions.append({
       'id': 3 * (i - 1) + 3,
       'title': "Difference between Riemann sums and Riemann integrals",
       'content': "Let M be an n×n hermition matrix of rank k if λ≠0 be an eigen value of M with corresponding unit column vector as eigen vector u i.e. Mu=λu. Then we must have...",
-      'tags': "linear-algebra matrices",
+      'tags': tags[5:7],
       'author': "Anton"
   })
 
