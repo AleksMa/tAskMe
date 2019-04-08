@@ -56,7 +56,7 @@ def base(request):
 
 
 def question(request):
-    return render(request, 'questions/quest.html', {})
+    return render(request, 'questions/question.html', {})
 
 
 def ask(request):

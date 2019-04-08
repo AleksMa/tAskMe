@@ -1,85 +1,25 @@
-<!DOCTYPE html> {% load static %}
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends "questions/base.html" %}
+{% load static %}
 
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+{% block title %}Question{% endblock %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
+{% block main-content %}
+    <div class="col-md-9 mr-auto">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-          crossorigin="anonymous">
+        <div class="row mt-3">
+
+            <div class="col-md-9 mr-auto">
 
 
-    <title>tAskMe</title>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-md fixed-top navbar-light bg-primary">
-    <a class="navbar-brand text-white float-right" href="#"><strong>tAskme</strong></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-
-        <form class="form-inline mt-2 mt-md-0 ">
-
-
-            <div class="input-group mr-sm-2">
-
-                <input type="text" class="form-control rounded-left" id="SearchLine" placeholder="Search">
-                <div class="input-group-prepend">
-                    <button class="btn btn-primary border-left-0 btn-outline-light rounded-right"><i
-                            class="fas fa-search fa-lg"></i>
-                    </button>
-                </div>
-            </div>
-
-        </form>
-
-        <button class="btn btn-success ml-3 btn-outline-light ">Ask!
-        </button>
-
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link HeaderMenu-link text-white" href="#">Sign in</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link border rounded text-white" href="#">Sign up</a>
-            </li>
-        </ul>
-
-    </div>
-</nav>
-
-<div class="container-fluid">
-
-
-    <div class="row mt-5">
-
-        <div class="col-md-9 mr-auto">
-
-            <div class="col-4 mt-4 mb-2">
-                <strong class="my_head" style="font-family: Roboto, sans-serif">Questions</strong>
-            </div>
-
-
-            <div class="row mb-2">
-                <div class="col-md-9">
-                    <div class="card flex-md-row mb-4 box-shadow">
+                <div class="row mb-2 mt-4">
+                    <div class="col">
                         <div class="card-body d-flex flex-column align-items-start">
                             <div class="row ">
                                 <div class="col-auto mt-2 mr-2 ">
                                     <div>
-                                        <img src="https://pp.userapi.com/c627131/v627131210/1ead1/D1Ixiikm9Kw.jpg"
-                                             width="100" height="100" style="object-fit: cover">
+                                        <img src="https://pp.userapi.com/c824200/v824200316/1a3b8c/dILSGW_fIyk.jpg"
+                                             width="100"
+                                             height="100" style="object-fit: cover">
                                     </div>
 
                                     <div class="mt-2">
@@ -95,70 +35,227 @@
                                             +
                                         </label>
                                         <label class="btn btn-primary">
-                                            <input type="radio" name="options" id="option2" autocomplete="off">
-                                            -
+                                            <input type="radio" name="options" id="option2" autocomplete="off"> -
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col ml-2">
+                                <div class="col ml-2 mt-3">
+                                    <h3 class="mb-0">
+                                        <a class="text-primary" href="#">Number of five digit numbers that can be
+                                            formed
+                                            with this
+                                            condition</a>
+                                    </h3>
+                                    <p class="card-text mb-auto mt-2">How many five digit numbers can be made having
+                                        the
+                                        digits
+                                        1,2,3 each of which can be used at most thrice in a number?</p>
 
-                                    <p class="card-text mb-auto mt-2">
-
-Unfortunately, you're making distinctions where there aren't any--for example, one digit 1 is the same as any other, though it may have a different meaning once we choose a place for it.
-
-The first thing I notice about this problem is that, if I want to directly count the desired numbers, there will be several cases and subcases. We could start with the case of no 1s (with subcases two 2s and three 2s), then the case of a single 1 (with subcases one 2, two 2s, and three 2s), and so on. That seems like a pain, though.
-                                    </p>
                                     <div class="row align-items-center mt-3">
-                                        <div class="col ">
-                                            <button class="btn btn-success">
-                                                I know answer!
-                                            </button>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <p class="text-dark">Tags:</p>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="#" class="text-primary">linear-algebra </a>
+                                                    <a href="#" class="text-primary">matrices </a>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
+
                     </div>
-
                 </div>
+
+
+                <div class="row mb-2">
+                    <div class="col border-bottom border-top border-dark">
+
+                        <div class="row mb-2 mt-4">
+                            <div class="col">
+                                <div class="card flex-md-row mb-4 box-shadow">
+                                    <div class="card-body d-flex flex-column align-items-start">
+                                        <div class="row ">
+                                            <div class="col-auto mt-2 mr-2 ">
+                                                <div>
+                                                    <img src="https://pp.userapi.com/c627131/v627131210/1ead1/D1Ixiikm9Kw.jpg"
+                                                         width="100" height="100" style="object-fit: cover">
+                                                </div>
+
+                                                <div class="mt-2">
+                                                    <input value="12345" style="width: 100px; text-align: center;">
+                                                </div>
+
+                                                <div class="btn-group btn-group-toggle rounded align-self-center mt-1"
+                                                     data-toggle="buttons">
+
+
+                                                    <label class="btn btn-primary">
+                                                        <input type="radio" name="options" id="option1"
+                                                               autocomplete="off">
+                                                        +
+                                                    </label>
+                                                    <label class="btn btn-primary">
+                                                        <input type="radio" name="options" id="option2"
+                                                               autocomplete="off">
+                                                        -
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col ml-2">
+
+                                                <p class="card-text mb-auto mt-2">
+
+                                                    Unfortunately, you're making distinctions where there aren't
+                                                    any--for
+                                                    example,
+                                                    one digit 1 is the same as any other, though it may have a
+                                                    different
+                                                    meaning
+                                                    once we choose a place for it.
+
+                                                    The first thing I notice about this problem is that, if I want
+                                                    to
+                                                    directly
+                                                    count
+                                                    the desired numbers, there will be several cases and subcases.
+                                                    We could
+                                                    start
+                                                    with the case of no 1s (with subcases two 2s and three 2s), then
+                                                    the
+                                                    case of
+                                                    a
+                                                    single 1 (with subcases one 2, two 2s, and three 2s), and so on.
+                                                    That
+                                                    seems
+                                                    like
+                                                    a pain, though.
+                                                </p>
+                                                <div class="row align-items-center mt-3">
+                                                    <div class="col">
+                                                        <form>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                       id="correctCheck" name="example1">
+                                                                <label class="custom-control-label"
+                                                                       for="correctCheck">Correct</label>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="card flex-md-row mb-4 box-shadow">
+                                    <div class="card-body d-flex flex-column align-items-start">
+                                        <div class="row ">
+                                            <div class="col-auto mt-2 mr-2 ">
+                                                <div>
+                                                    <img src="https://pp.userapi.com/c627131/v627131210/1ead1/D1Ixiikm9Kw.jpg"
+                                                         width="100" height="100" style="object-fit: cover">
+                                                </div>
+
+                                                <div class="mt-2">
+                                                    <input value="12345" style="width: 100px; text-align: center;">
+                                                </div>
+
+                                                <div class="btn-group btn-group-toggle rounded align-self-center mt-1"
+                                                     data-toggle="buttons">
+
+
+                                                    <label class="btn btn-primary">
+                                                        <input type="radio" name="options" id="option1"
+                                                               autocomplete="off">
+                                                        +
+                                                    </label>
+                                                    <label class="btn btn-primary">
+                                                        <input type="radio" name="options" id="option2"
+                                                               autocomplete="off">
+                                                        -
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col ml-2">
+
+                                                <p class="card-text mb-auto mt-2">
+
+                                                    Unfortunately, you're making distinctions where there aren't
+                                                    any--for
+                                                    example,
+                                                    one digit 1 is the same as any other, though it may have a
+                                                    different
+                                                    meaning
+                                                    once we choose a place for it.
+
+                                                    The first thing I notice about this problem is that, if I want
+                                                    to
+                                                    directly
+                                                    count
+                                                    the desired numbers, there will be several cases and subcases.
+                                                    We could
+                                                    start
+                                                    with the case of no 1s (with subcases two 2s and three 2s), then
+                                                    the
+                                                    case of
+                                                    a
+                                                    single 1 (with subcases one 2, two 2s, and three 2s), and so on.
+                                                    That
+                                                    seems
+                                                    like
+                                                    a pain, though.
+                                                </p>
+                                                <div class="row align-items-center mt-3">
+                                                    <div class="col">
+                                                        <form>
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                       id="correctCheck" name="example1">
+                                                                <label class="custom-control-label"
+                                                                       for="correctCheck">Correct</label>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="mt-3 mb-4" id="yourAnswer">
+                        <textarea class="form-control" rows="5" id="text"
+                                  placeholder="Enter your answer here"></textarea>
+                    <button class="btn btn-success my-3 ">Answer</button>
+                </div>
+
             </div>
         </div>
 
-
-        <div class="col-md-3 mt-5">
-            <div class="">
-                <h3>Tags</h3>
-                <a href="#" class="text-primary">linear-algebra </a>
-                <a href="#" class="text-primary">matrices </a>
-                <a href="#" class="text-primary">permutations</a>
-                <a href="#" class="text-primary">combinatorics</a>
-                <a href="#" class="text-primary">calculus</a>
-                <a href="#" class="text-primary">real-analysis</a>
-                <a href="#" class="text-primary">integration</a>
-
-            </div>
-            <div class="mt-2">
-                <h3>Users</h3>
-                <a href="#">Danil</a><br>
-                <a href="#">Anton</a><br>
-                <a href="#">Mi Sa</a><br>
-            </div>
-        </div>
     </div>
-</div>
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}
