@@ -73,6 +73,16 @@ def question(request, question_id):
     return render(request, 'questions/question.html', {'answers': answers, 'question': questions[int(question_id)-1]})
 
 
+def tag(request, tag_name):
+    tag_obj = {'text': tag_name}
+
+    def is_tag(q):
+        return tag_obj in q['tags']
+
+    qs = filter(is_tag, questions)
+    return render(request, 'questions/tag.html', {'tag': tag_name, 'questions': qs})
+
+
 def ask(request):
     return render(request, 'questions/ask.html', {})
 

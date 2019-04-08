@@ -1,60 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,300,700);
 @import url(http://fonts.googleapis.com/css?family=K2D:400,300,700);
 
 .my_head {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 2.25rem;
 }
 
-
-input[type="text"], textarea {
-    outline: none;
-    box-shadow:none !important;
-    border:1px solid #ccc;
-}
-
-.btn:focus, .page-link:focus {
-    outline: none;
-    box-shadow:none !important;
-    border:1px solid #ccc;
-}
-
-.main-container {
-    margin-top: 100px;
-}
-
-#search-button {
-    border-top-left-radius: 0rem;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0rem;
-}
-
-.navbar {
-    height: 60px;
-    background-color: black !important
-}
-
 .navbar-brand {
-    font-family: K2D;
+    font-family: K2D, Roboto, sans-serif;
     font-weight: 900;
-}
-
-.blog-sidebar h4 {
-    font-family: Montserrat;
-    font-weight: 600;
-}
-
-.avatar-thumbnail {
-    width:50px;
-    height:50px;
-
-    border: 2px solid gray;
-    overflow: hidden;
-    position: relative;
-}
-
-.avatar-thumbnail img {
-    position: absolute;
-    /* transform: translate(-50%,-50%) */
 }

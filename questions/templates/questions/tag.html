@@ -1,0 +1,9 @@
+{% extends "questions/index.html" %}
+{% load static %}
+
+{% block title %}Tag{% endblock %}
+
+
+{% block head %}
+    <strong class="my_head">Tag:  <a href=" {% url 'tag' tag %} ">{{ tag }}</a> </strong>
+{%  endblock %}

@@ -44,9 +44,11 @@
 
                             <div class="row align-items-center mt-3">
                                 <div class="col ">
-                                    <button class="btn btn-success">
-                                        I know answer!
-                                    </button>
+                                    <a href="{% url 'question' question.id %}">
+                                        <button class="btn btn-success">
+                                            I know answer!
+                                        </button>
+                                    </a>
                                 </div>
                                 <div class="col">
                                     <div class="row">
@@ -56,7 +58,7 @@
                                         <div class="col">
 
                                             {% for tag in question.tags %}
-                                                <a href=#{% comment %}{% url "base" tag.text %}{% endcomment %}> {{ tag.text }}</a>
+                                                <a href=" {% url 'tag' tag.text %} "> {{ tag.text }} </a>
                                             {% endfor %}
 
                                         </div>

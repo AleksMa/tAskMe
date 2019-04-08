@@ -8,8 +8,8 @@
 
     <div class="col-md-9 mr-auto">
 
-        <div class="col-4 mt-4 mb-2">
-            <strong class="my_head" style="font-family: Roboto, sans-serif">Questions</strong>
+        <div class="col-9 mt-4 mb-2">
+            {% block head %} <strong class="my_head">Questions</strong> {% endblock %}
         </div>
 
         {% for question in questions %}
