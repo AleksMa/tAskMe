@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.question_list, name='index'),
+    path('<int:page_num>/', views.question_list, name='index'),
     path('base', views.base, name='base'),
     path('question/<question_id>', views.question, name='question'),
     path('tag/<tag_name>', views.tag, name='tag'),
