@@ -59,43 +59,12 @@ for i in range(1, 3):
     })
 
 
-def pag(items, items_on_page, page_am, request, num):
-    paginator = Paginator(items, items_on_page)
-    try:
-        page_num = paginator.validate_number(num)
-    except (ValueError, TypeError, EmptyPage):
-        page_num = 1
 
-    if page_num > page_am / 2:
-        beg_idx = page_num - page_am / 2
-    else:
-        beg_idx = 1
-
-    if page_num + page_am / 2 < paginator.num_pages:
-        end_idx = page_num + page_am / 2
-        if end_idx < page_am:
-            end_idx = page_am + 1
-    else:
-        end_idx = paginator.num_pages + 1
-    paginator.indexes = range(int(beg_idx), int(end_idx))
-    page = paginator.get_page(page_num)
-    return paginator, page
-
-
-
-
-def question_list(request, page_num = 1):
-    # questions = Question.objects.all()
+def index(request, page_num = 1):
     paginator = Paginator(questions, 10)
-    paginator.indexes = range(1, (len(questions) + 9)//10 + 1)
-    # page = request.GET.get('page')
+    paginator.indexes = range(1, (len(questions) + 9)//10 + 1)  # Округление в большую степень + 1
     quests = paginator.get_page(page_num)
     return render(request, 'questions/index.html', {'questions': quests, 'paginator': paginator})
-
-    # return render(request, 'questions/index.html', {'questions': questions})
-
-    # return render(request, 'questions/index.html', {})
-
 
 def base(request):
     return render(request, 'questions/base.html', {})
@@ -130,5 +99,3 @@ def signup(request):
 def settings(request):
     return render(request, 'questions/settings.html', {})
 
-# class AboutView(TemplateView):
-#     template_name = "questions/base.html"
