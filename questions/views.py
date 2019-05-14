@@ -59,18 +59,31 @@ for i in range(1, 3):
     })
 
 
+def paginate(objects, page, count):
+    paginator = Paginator(objects, count)
+    try:
+        return paginator.page(page)
+    except PageNotAnInteger:
+        return paginator.page(1)
+    except EmptyPage:
+        return 0
 
-def index(request, page_num = 1):
-    paginator = Paginator(questions, 10)
-    paginator.indexes = range(1, (len(questions) + 9)//10 + 1)  # Округление в большую степень + 1
-    quests = paginator.get_page(page_num)
-    return render(request, 'questions/index.html', {'questions': quests, 'paginator': paginator})
+
+def index(request):
+    page = request.GET.get('page')
+    quests = paginate(questions, page, 5)
+    if quests == 0:
+        return render(request, 'questions/404.html')
+    return render(request, 'questions/index.html', {'questions': quests})
+
 
 def base(request):
     return render(request, 'questions/base.html', {})
 
 
 def question(request, question_id):
+    if not question_id.isdigit():
+        question_id = 1
     return render(request, 'questions/question.html', {'answers': answers, 'question': questions[int(question_id)-1]})
 
 
