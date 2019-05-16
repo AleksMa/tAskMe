@@ -27,12 +27,12 @@ class QuestionManager(models.Manager):
             return self.none()
 
 
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Profile(AbstractUser):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     photo = models.ImageField(default='images/Danil.jpg')
 
     def __str__(self):
-        return self.user.last_name
+        return self.last_name
 
 
 class Answer(models.Model):

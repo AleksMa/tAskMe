@@ -41,7 +41,7 @@ for i in range(1, 11):
     questions.append({
         'id': 3 * (i - 1) + 3,
         'title': "Difference between Riemann sums and Riemann integrals",
-        'content': "Let M be an n×n hermition matrix of rank k if λ≠0 be an eigen value of M with corresponding unit column vector as eigen vector u i.e. Mu=λu. Then we must have...",
+        'content': "I have a question that says \"Calculate the following Riemann integrals\". I know about Riemann sums. Is there any difference between Riemann sums and Riemann integrals?",
         'tags': tags[5:7],
         'author': Anton,
         'rate': 3 * (i - 1) + 3
