@@ -23,9 +23,14 @@ from . import settings
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+handler404 = 'questions.views.e404'
+handler500 = 'questions.views.e500'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('questions.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+
+# handler404 = 'questions.views.e404'

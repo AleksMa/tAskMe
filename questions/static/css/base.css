@@ -1,5 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=K2D:400,300,700);
 
+html{
+    overflow-x: visible;
+}
+
 .my_head {
   font-family: Roboto, sans-serif;
   font-size: 2.25rem;

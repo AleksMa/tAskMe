@@ -3,6 +3,9 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.utils import timezone
 from django.views.generic import TemplateView
 from .models import Question
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from tAskMe.settings import PAGES_COUNT, ERROR_404
 
 Danil = ({'photo': 'images/Danil.jpg'})
 MiSa = ({'photo': 'images/MiSa.jpg'})
@@ -68,12 +71,18 @@ def paginate(objects, page, count):
     except EmptyPage:
         return 0
 
+def e404(request, exception):
+    return render(request, 'questions/404.html', status=404)
+
+def e500(request):
+    return render(request, 'questions/500.html', status=500)
+
 
 def index(request):
     page = request.GET.get('page')
-    quests = paginate(questions, page, 5)
-    if quests == 0:
-        return render(request, 'questions/404.html')
+    quests = paginate(questions, page, PAGES_COUNT)
+    if quests == ERROR_404:
+        return e404(request)
     return render(request, 'questions/index.html', {'questions': quests})
 
 
@@ -82,13 +91,17 @@ def base(request):
 
 
 def question(request, question_id):
-    if not question_id.isdigit():
-        question_id = 1
+    if not question_id.isdigit() or int(question_id) > len(questions):
+        return e404(request)
     return render(request, 'questions/question.html', {'answers': answers, 'question': questions[int(question_id)-1]})
 
 
 def tag(request, tag_name):
+
     tag_obj = {'text': tag_name}
+
+    if tags.count(tag_obj) == 0:
+        return e404(request)
 
     def is_tag(q):
         return tag_obj in q['tags']
@@ -111,4 +124,3 @@ def signup(request):
 
 def settings(request):
     return render(request, 'questions/settings.html', {})
-
