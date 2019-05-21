@@ -31,7 +31,7 @@ class Profile(AbstractUser):
     photo = models.ImageField(default='images/Danil.jpg')
 
     def __str__(self):
-        return self.last_name
+        return self.first_name
 
 
 class Answer(models.Model):
@@ -47,12 +47,13 @@ class Answer(models.Model):
 
 
 class Question(models.Model):
+    objects = QuestionManager()
     title = models.CharField(max_length=140, default="")
     content = models.TextField(default="")
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    answers = models.ManyToManyField(Answer)
     created_date = models.DateTimeField(default=timezone.now)
     tags = models.ManyToManyField(Tag)
-    answers = models.ManyToManyField(Answer)
     rate = models.IntegerField(default=0)
     list = QuestionManager()
 
@@ -61,6 +62,8 @@ class Question(models.Model):
 
 
 class Like(models.Model):
-    author = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
-    question = models.ForeignKey(Question, on_delete=models.SET_NULL, null=True, default=None)
-    answer = models.ForeignKey(Answer, on_delete=models.SET_NULL, null=True, default=None)
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True, default=None)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, null=True, default=None)
+    positive = models.IntegerField(default=0)
+    negative = models.IntegerField(default=0)
