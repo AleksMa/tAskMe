@@ -71,8 +71,10 @@ def paginate(objects, page, count):
     except EmptyPage:
         return 0
 
+
 def e404(request, exception):
     return render(request, 'questions/404.html', status=404)
+
 
 def e500(request):
     return render(request, 'questions/500.html', status=500)
@@ -82,7 +84,7 @@ def index(request):
     page = request.GET.get('page')
     quests = paginate(questions, page, PAGES_COUNT)
     if quests == ERROR_404:
-        return e404(request)
+        return e404(request, exception=404)
     return render(request, 'questions/index.html', {'questions': quests})
 
 
@@ -92,7 +94,7 @@ def base(request):
 
 def question(request, question_id):
     if not question_id.isdigit() or int(question_id) > len(questions):
-        return e404(request)
+        return e404(request, exception=404)
     return render(request, 'questions/question.html', {'answers': answers, 'question': questions[int(question_id)-1]})
 
 

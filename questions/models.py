@@ -28,7 +28,6 @@ class QuestionManager(models.Manager):
 
 
 class Profile(AbstractUser):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     photo = models.ImageField(default='images/Danil.jpg')
 
     def __str__(self):
@@ -36,7 +35,7 @@ class Profile(AbstractUser):
 
 
 class Answer(models.Model):
-    title = models.TextField(default="")
+    title = models.CharField(max_length=140, default="")
     content = models.TextField(default="")
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     created_date = models.DateTimeField(default=timezone.now)
@@ -48,7 +47,7 @@ class Answer(models.Model):
 
 
 class Question(models.Model):
-    title = models.TextField(default="")
+    title = models.CharField(max_length=140, default="")
     content = models.TextField(default="")
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     created_date = models.DateTimeField(default=timezone.now)
@@ -60,9 +59,8 @@ class Question(models.Model):
     def __str__(self):
         return self.title
 
+
 class Like(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
-
     question = models.ForeignKey(Question, on_delete=models.SET_NULL, null=True, default=None)
-
     answer = models.ForeignKey(Answer, on_delete=models.SET_NULL, null=True, default=None)
