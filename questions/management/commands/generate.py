@@ -78,7 +78,7 @@ class Command(BaseCommand):
                 title=fake.sentence(),
                 content='\n'.join(fake.sentences(fake.random_int(1, 5))),
                 rate=fake.random_int(1, 100),
-                id=Question.list.count() + 1)
+                id=Question.objects.all().count() + 1)
             l = Like(question=q, positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
             l.save()
             q.rate = l.positive + l.negative

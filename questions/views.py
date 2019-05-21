@@ -81,7 +81,7 @@ def e500(request):
 
 
 def index(request):
-    questions = Question.list.all()
+    questions = Question.objects.order_by_hot()
     page = request.GET.get('page')
     quests = paginate(questions, page, PAGES_COUNT)
     if quests == ERROR_404:
@@ -94,26 +94,22 @@ def base(request):
 
 
 def question(request, question_id):
-    if not question_id.isdigit() or int(question_id) > len(questions):
+    if not question_id.isdigit() or int(question_id) > len(Question.objects.all()):
         return e404(request, exception=404)
-    return render(request, 'questions/question.html', {'question': Question.list.get(pk=question_id)})
+    return render(request, 'questions/question.html', {'question': Question.objects.get(pk=question_id)})
 
 
 def tag(request, tag_name):
-    tag = Tag.objects.get(text=tag_name)
-    questions = Question.list.filter(tags__text=tag.text)
-
-    paginator = paginate(request, questions, PAGES_COUNT)
-    page = request.GET.get('page')
-
     try:
-        quest = paginator.page(page)
-    except PageNotAnInteger:
-        quest = paginator.page(1)
-    except EmptyPage:
-        quest = paginator.page(paginator.num_pages)
+        tag = Tag.objects.get(text=tag_name)
+    except:
+        return e404(request, exception=404)
 
-    return render(request, 'questions/tag.html', {'tag': tag_name, 'questions': qs})
+    questions = Question.objects.filter_by_tag(tag)
+    page = request.GET.get('page')
+    quests = paginate(questions, page, PAGES_COUNT)
+
+    return render(request, 'questions/tag.html', {'tag': tag, 'questions': quests})
 
 
 def ask(request):

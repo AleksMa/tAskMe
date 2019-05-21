@@ -5,5 +5,5 @@
 
 
 {% block head %}
-    <strong class="my_head">Tag:  <a href=" {% url 'tag' tag %} ">{{ tag }}</a> </strong>
+    <strong class="my_head">Tag:  <a href=" {% url 'tag' tag.text %} ">{{ tag.text }}</a> </strong>
 {%  endblock %}

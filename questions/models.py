@@ -22,7 +22,7 @@ class QuestionManager(models.Manager):
 
     def filter_by_tag(self, tag):
         try:
-            return super().filter(tags__in=[Tag.objects.get(title=tag).id])
+            return super().filter(tags__text=tag.text)
         except(ObjectDoesNotExist):
             return self.none()
 
