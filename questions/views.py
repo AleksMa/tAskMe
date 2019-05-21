@@ -102,7 +102,7 @@ def question(request, question_id):
 def tag(request, tag_name):
     try:
         tag = Tag.objects.get(text=tag_name)
-    except:
+    except Tag.model.DoesNotExist:
         return e404(request, exception=404)
 
     questions = Question.objects.filter_by_tag(tag)
