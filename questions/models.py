@@ -28,7 +28,7 @@ class QuestionManager(models.Manager):
 
 
 class Profile(AbstractUser):
-    photo = models.ImageField(default='images/Danil.jpg')
+    photo = models.TextField(default='images/Danil.jpg')
 
     def __str__(self):
         return self.first_name

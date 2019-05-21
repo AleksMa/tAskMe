@@ -21,7 +21,7 @@ tags.append({'text': "real-analysis"})
 tags.append({'text': "integration"})
 
 questions = []
-for i in range(1, 11):
+for i in range(1, 2):
     questions.append({
         'id': 3 * (i - 1) + 1,
         'title': "Linear algebra objective type question",
@@ -81,6 +81,7 @@ def e500(request):
 
 
 def index(request):
+    questions = Question.list.all()
     page = request.GET.get('page')
     quests = paginate(questions, page, PAGES_COUNT)
     if quests == ERROR_404:
@@ -95,7 +96,7 @@ def base(request):
 def question(request, question_id):
     if not question_id.isdigit() or int(question_id) > len(questions):
         return e404(request, exception=404)
-    return render(request, 'questions/question.html', {'answers': answers, 'question': questions[int(question_id)-1]})
+    return render(request, 'questions/question.html', {'question': Question.list.get(pk=question_id)})
 
 
 def tag(request, tag_name):

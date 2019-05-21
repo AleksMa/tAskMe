@@ -14,7 +14,7 @@
                 <hr>
             </div>
         </div>
-        {% for answer in answers %}
+        {% for answer in question.answers.all %}
 
             {% include "questions/answer.html" with question=answer %}
 

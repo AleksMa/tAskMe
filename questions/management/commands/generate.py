@@ -13,7 +13,6 @@ unames = ['Anton', 'MiSa', 'Danil', 'Vlad', 'Ann', 'Sawa', 'Dinar']
 
 
 def get_random_element(qs, min_pk, max_pk):
-
     if max_pk is None:
         max_pk = qs.aggregate(Max('pk'))['pk__max']
     if min_pk is None:
@@ -61,7 +60,7 @@ class Command(BaseCommand):
             name = choice(list(unames))
             p = Profile.objects.create(first_name=name,
                                        last_name=name,
-                                       username=name+str(fake.random_int(1, 1024)),
+                                       username=name + str(fake.random_int(1, 1024)),
                                        password='123456',
                                        photo=choice(list(paths)))
 
@@ -78,13 +77,16 @@ class Command(BaseCommand):
                 author=get_random_element(Profile.objects, None, None),
                 title=fake.sentence(),
                 content='\n'.join(fake.sentences(fake.random_int(1, 5))),
-                rate=fake.random_int(1, 100))
+                rate=fake.random_int(1, 100),
+                id=Question.list.count() + 1)
             l = Like(question=q, positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
             l.save()
             q.rate = l.positive + l.negative
             q.save()
-            #for j in range(1, fake.random_int(1, 7)):
-            #    q.tags.add(choice(tags))
+            for j in range(1, fake.random_int(2, 5)):
+                q.answers.add(get_random_element(Answer.objects.all(), None, None))
+            for j in range(1, fake.random_int(2, 5)):
+                q.tags.add(get_random_element(Tag.objects.all(), None, None))
 
     def generate_answers(self, answers_cnt):
         print(f"GENERATE ANSWERS {answers_cnt}")

@@ -12,7 +12,7 @@
                     <p class="text-dark">Tags:</p>
                 </div>
                 <div class="col">
-                    {% for tag in question.tags %}
+                    {% for tag in question.tags.all %}
                         <a href=#{% comment %}{% url "base" tag.text %}{% endcomment %}> {{ tag.text }}</a>
                     {% endfor %}
 
