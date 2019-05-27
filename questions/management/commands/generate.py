@@ -12,21 +12,6 @@ tags = ['linear-algebra', 'matrices', 'permutations', 'combinatorics', 'calculus
 unames = ['Anton', 'MiSa', 'Danil', 'Vlad', 'Ann', 'Sawa', 'Dinar']
 
 
-def get_random_element(qs, min_pk, max_pk):
-    if max_pk is None:
-        max_pk = qs.aggregate(Max('pk'))['pk__max']
-    if min_pk is None:
-        min_pk = qs.aggregate(Min('pk'))['pk__min']
-    while True:
-
-        try_pk = random.randint(min_pk, max_pk)
-        try:
-            found = qs.get(pk=try_pk)
-            return found
-        except qs.model.DoesNotExist:
-            pass
-
-
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
@@ -45,24 +30,24 @@ class Command(BaseCommand):
         if users_cnt is not None:
             self.generate_users(users_cnt)
 
-        if questions_cnt is not None:
-            self.generate_questions(questions_cnt)
-
         if answers_cnt is not None:
             self.generate_answers(answers_cnt)
 
         if tags_cnt is not None:
             self.generate_tags(tags_cnt)
 
+        if questions_cnt is not None:
+            self.generate_questions(questions_cnt)
+
     def generate_users(self, users_cnt):
         print(f"GENERATE USERS {users_cnt}")
         for i in range(users_cnt):
-            name = choice(list(unames))
+            name = choice(unames)
             p = Profile.objects.create(first_name=name,
                                        last_name=name,
                                        username=name + str(fake.random_int(1, 1024)),
                                        password='123456',
-                                       photo=choice(list(paths)))
+                                       photo=choice(paths))
 
     def generate_tags(self, tags_cnt):
         print(f"GENERATE TAGS {tags_cnt}")
@@ -74,28 +59,29 @@ class Command(BaseCommand):
         print(f"GENERATE QUESTIONS {questions_cnt}")
         for i in range(questions_cnt):
             q = Question.objects.create(
-                author=get_random_element(Profile.objects, None, None),
+                author=choice(Profile.objects.all()),
                 title=fake.sentence(),
                 content='\n'.join(fake.sentences(fake.random_int(1, 5))),
                 rate=fake.random_int(1, 100),
-                id=Question.list.count() + 1)
-            l = Like(question=q, positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+                id=Question.objects.all().count() + 1)
+            l = Like(positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+            l.content_object = q
             l.save()
             q.rate = l.positive + l.negative
             q.save()
             for j in range(1, fake.random_int(2, 5)):
-                q.answers.add(get_random_element(Answer.objects.all(), None, None))
+                q.answers.add(choice(Answer.objects.all()))
             for j in range(1, fake.random_int(2, 5)):
-                q.tags.add(get_random_element(Tag.objects.all(), None, None))
+                q.tags.add(choice(Tag.objects.all()))
 
     def generate_answers(self, answers_cnt):
         print(f"GENERATE ANSWERS {answers_cnt}")
         for i in range(answers_cnt):
             a = Answer.objects.create(
-                author=get_random_element(Profile.objects, None, None),
-                question=get_random_element(Question.objects, None, None),
+                author=choice(Profile.objects.all()),
                 content=fake.sentence())
-            l = Like(answer=a, positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+            l = Like(positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+            l.content_object = a
             l.save()
             a.rate = l.positive + l.negative
             a.save()

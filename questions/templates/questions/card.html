@@ -58,7 +58,7 @@
                                         <div class="col">
 
                                          {% for tag in question.tags.all %}
-                                                <a href=" {% comment %}{% url 'tag' tag.text %}{% endcomment %} # "> {{ tag.text }} </a>
+                                                <a href="{% url 'tag' tag.text %} "> {{ tag.text }} </a>
                                             {% endfor %}
 
 
