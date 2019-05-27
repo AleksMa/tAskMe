@@ -30,14 +30,14 @@ class Command(BaseCommand):
         if users_cnt is not None:
             self.generate_users(users_cnt)
 
-        if questions_cnt is not None:
-            self.generate_questions(questions_cnt)
-
         if answers_cnt is not None:
             self.generate_answers(answers_cnt)
 
         if tags_cnt is not None:
             self.generate_tags(tags_cnt)
+
+        if questions_cnt is not None:
+            self.generate_questions(questions_cnt)
 
     def generate_users(self, users_cnt):
         print(f"GENERATE USERS {users_cnt}")
@@ -64,7 +64,8 @@ class Command(BaseCommand):
                 content='\n'.join(fake.sentences(fake.random_int(1, 5))),
                 rate=fake.random_int(1, 100),
                 id=Question.objects.all().count() + 1)
-            l = Like(question=q, positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+            l = Like(positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+            l.content_object = q
             l.save()
             q.rate = l.positive + l.negative
             q.save()
@@ -78,9 +79,9 @@ class Command(BaseCommand):
         for i in range(answers_cnt):
             a = Answer.objects.create(
                 author=choice(Profile.objects.all()),
-                question=choice(Question.objects.all()),
                 content=fake.sentence())
-            l = Like(answer=a, positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+            l = Like(positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
+            l.content_object = a
             l.save()
             a.rate = l.positive + l.negative
             a.save()
