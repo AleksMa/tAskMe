@@ -57,6 +57,8 @@ class Command(BaseCommand):
 
     def generate_questions(self, questions_cnt):
         print(f"GENERATE QUESTIONS {questions_cnt}")
+        ans = list(Answer.objects.all())
+        ts  = list(Answer.objects.all())
         for i in range(questions_cnt):
             q = Question.objects.create(
                 author=choice(Profile.objects.all()),
@@ -70,15 +72,16 @@ class Command(BaseCommand):
             q.rate = l.positive + l.negative
             q.save()
             for j in range(1, fake.random_int(2, 5)):
-                q.answers.add(choice(Answer.objects.all()))
+                q.answers.add(choice(ans))
             for j in range(1, fake.random_int(2, 5)):
-                q.tags.add(choice(Tag.objects.all()))
+                q.tags.add(choice(ts))
 
     def generate_answers(self, answers_cnt):
         print(f"GENERATE ANSWERS {answers_cnt}")
+        ps = list(Profile.objects.all())
         for i in range(answers_cnt):
             a = Answer.objects.create(
-                author=choice(Profile.objects.all()),
+                author=choice(ps),
                 content=fake.sentence())
             l = Like(positive=fake.random_int(1, 100), negative=-fake.random_int(1, 100))
             l.content_object = a
