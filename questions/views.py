@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.utils import timezone
 from django.views.generic import TemplateView
-from .models import Question
+from .models import Question, Tag, Answer
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from tAskMe.settings import PAGES_COUNT, ERROR_404
@@ -81,7 +81,7 @@ def e500(request):
 
 
 def index(request):
-    questions = Question.list.all()
+    questions = Question.objects.order_by_hot()
     page = request.GET.get('page')
     quests = paginate(questions, page, PAGES_COUNT)
     if quests == ERROR_404:
@@ -94,23 +94,22 @@ def base(request):
 
 
 def question(request, question_id):
-    if not question_id.isdigit() or int(question_id) > len(questions):
+    if not question_id.isdigit() or int(question_id) > len(Question.objects.all()):
         return e404(request, exception=404)
-    return render(request, 'questions/question.html', {'question': Question.list.get(pk=question_id)})
+    return render(request, 'questions/question.html', {'question': Question.objects.get(pk=question_id)})
 
 
 def tag(request, tag_name):
+    try:
+        tag = Tag.objects.get(text=tag_name)
+    except Tag.model.DoesNotExist:
+        return e404(request, exception=404)
 
-    tag_obj = {'text': tag_name}
+    questions = Question.objects.filter_by_tag(tag)
+    page = request.GET.get('page')
+    quests = paginate(questions, page, PAGES_COUNT)
 
-    if tags.count(tag_obj) == 0:
-        return e404(request)
-
-    def is_tag(q):
-        return tag_obj in q['tags']
-
-    qs = filter(is_tag, questions)
-    return render(request, 'questions/tag.html', {'tag': tag_name, 'questions': qs})
+    return render(request, 'questions/tag.html', {'tag': tag, 'questions': quests})
 
 
 def ask(request):
