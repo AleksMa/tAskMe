@@ -3,11 +3,12 @@ from django import forms
 from questions.models import Profile
 from django.core.validators import validate_email
 
+
 class ProfileForm(forms.ModelForm):
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Sergey'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Igor'}))
     email = forms.CharField(
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'serega666@bmstu.ru'}))
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Vampir666'}))
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'ivanov@bmstu.ru'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'GucciMain'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     repeat_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     photo = forms.ImageField()

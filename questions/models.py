@@ -45,7 +45,7 @@ class Profile(AbstractUser):
 
 
 class Like(models.Model):
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    authors = models.ManyToManyField(Profile)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
@@ -56,7 +56,7 @@ class Like(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=140, default="Title", blank=False)
+    title = models.CharField(max_length=140, default="Title", blank=False, null=False)
     content = models.TextField(default="")
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     created_date = models.DateTimeField(default=timezone.now)

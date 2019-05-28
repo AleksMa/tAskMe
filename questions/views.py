@@ -122,7 +122,6 @@ def ask(request):
 
 def signup(request):
     if request.method == 'POST':
-
         if request.user.is_authenticated:
             return HttpResponseRedirect('/')
 
