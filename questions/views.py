@@ -6,6 +6,10 @@ from .models import Question, Tag, Answer
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from tAskMe.settings import PAGES_COUNT, ERROR_404
+from django.http import Http404, HttpResponseRedirect
+from django.contrib.auth import authenticate, login
+from questions.forms import ProfileForm
+
 
 Danil = ({'photo': 'images/Danil.jpg'})
 MiSa = ({'photo': 'images/MiSa.jpg'})
@@ -116,12 +120,23 @@ def ask(request):
     return render(request, 'questions/ask.html', {})
 
 
-def login(request):
-    return render(request, 'questions/login.html', {})
-
-
 def signup(request):
-    return render(request, 'questions/signup.html', {})
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            return HttpResponseRedirect('/')
+
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            print('VALID')
+            form.save()
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password'],
+                                    )
+            login(request, new_user)
+            return HttpResponseRedirect('/')
+    else:
+        form = ProfileForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 
 def settings(request):

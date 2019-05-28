@@ -46,8 +46,9 @@ class Command(BaseCommand):
             p = Profile.objects.create(first_name=name,
                                        last_name=name,
                                        username=name + str(fake.random_int(1, 1024)),
-                                       password='123456',
                                        photo=choice(paths))
+            p.set_password('123456')
+            p.save()
 
     def generate_tags(self, tags_cnt):
         print(f"GENERATE TAGS {tags_cnt}")

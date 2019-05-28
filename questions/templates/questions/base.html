@@ -58,12 +58,22 @@
         </a>
 
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link HeaderMenu-link text-white" href="{% url 'login' %}">Sign in</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link border rounded text-white" href="{% url 'signup' %}">Sign up</a>
-            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <div class="nav-link HeaderMenu-link text-white mr-2"><strong>{{ user.username }}</strong></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link border rounded text-white" href="{% url 'logout' %}">Log Out</a>
+                </li>
+
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link HeaderMenu-link text-white" href="{% url 'login' %}">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link border rounded text-white" href="{% url 'signup' %}">Sign up</a>
+                </li>
+            {% endif %}
         </ul>
 
     </div>
@@ -81,9 +91,9 @@
         <div class="col-md-3 mt-5 sidebar">
             <div class="">
                 <h3>Tags</h3>
-                <a href=" {% url 'tag' 'school' %} "> school </a> <br>
-                <a href=" {% url 'tag' 'commercial' %} "> commercial </a> <br>
-                <a href=" {% url 'tag' 'sign' %} "> sign </a>
+                <a href=" {% url 'tag' 'still' %} "> still </a> <br>
+                <a href=" {% url 'tag' 'might' %} "> might </a> <br>
+                <a href=" {% url 'tag' 'theory' %} "> theory </a>
 
             </div>
             <div class="mt-2">

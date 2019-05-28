@@ -7,13 +7,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 
-
 # TODO: problems
 # 1   Done
 # 2   Done
 # 3   Done
 # 4   Done
-# 5
+# 5   Done
 # 6   Done
 # 7   Done
 
@@ -46,7 +45,7 @@ class Profile(AbstractUser):
 
 
 class Like(models.Model):
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    authors = models.ManyToManyField(Profile)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
@@ -57,7 +56,7 @@ class Like(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=140, default="Title", blank=False)
+    title = models.CharField(max_length=140, default="Title", blank=False, null=False)
     content = models.TextField(default="")
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     created_date = models.DateTimeField(default=timezone.now)

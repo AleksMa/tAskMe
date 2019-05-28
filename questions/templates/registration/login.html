@@ -1,0 +1,29 @@
+{% extends "questions/base.html" %}
+{% load static %}
+
+{% block title %}Log In{% endblock %}
+
+
+{% block main-content %}
+
+    <div class="col-md-9 ">
+
+        <div class="col-9 mt-4 mb-2">
+            {% block head %} <strong class="my_head">Registration</strong> {% endblock %}
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Login</button>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2"></label>
+                <div class="col-sm-10">
+                    <a href="{% url 'signup' %}">Create New Account</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
