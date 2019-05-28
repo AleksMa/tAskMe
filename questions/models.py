@@ -7,13 +7,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 
-
 # TODO: problems
 # 1   Done
 # 2   Done
 # 3   Done
 # 4   Done
-# 5
+# 5   Done
 # 6   Done
 # 7   Done
 

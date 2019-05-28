@@ -28,6 +28,7 @@ handler500 = 'questions.views.e500'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('questions.urls')),
 ]
 
